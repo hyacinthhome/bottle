@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.gin" default-lazy="false">
+
+    <!-- 属性table 表示在数据库中的表名  -->
+    <class name="User" table="tb_user" >
+        <id name="id" column="id" type="int">
+            <!-- 值native表示会根据数据库来创建不同的主键生成策略 -->
+            <generator class="native"></generator>
+        </id>
+        <property name="username" column="username" type="string"></property>
+        <property name="password" column="password" type="string"></property>
+        <property name="stunum" column="stunum" type="string"></property>
+        <property name="gender" column="gender" type="string"></property>
+        <property name="phonenumber" column="phonenumber" type="string"></property>
+        <property name="email" column="email" type="string"></property>
+        <property name="school" column="school" type="string"></property>
+        <property name="academy" column="academy" type="string"></property>
+        <set name="drift_bottles" cascade="save-update" lazy="false"> <!--级联保存 save-update -->
+            <key column="myid" />
+            <one-to-many class="com.gin.Drift_Bottle" />
+        </set>
+    </class>
+</hibernate-mapping>

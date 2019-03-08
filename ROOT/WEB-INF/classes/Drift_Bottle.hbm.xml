@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.gin" default-lazy="false">
+
+    <!-- 属性table 表示在数据库中的表名  -->
+    <class name="Drift_Bottle" table="drift_bottle" lazy="false">
+        <id name="id" column="id" type="int">
+            <!-- 值native表示会根据数据库来创建不同的主键生成策略 -->
+            <generator class="native"></generator>
+        </id>
+        <property name="value" column="value" type="string"></property>
+        <property name="stu_id" column="stu_id" type="int"></property>
+        <property name="create_time" column="create_time" type="calendar"></property>
+        <property name="usedtime" column="usedtime" type="int"></property>
+
+        <many-to-one name="user" class="com.gin.User" column="myid" lazy="false">
+        </many-to-one>
+    </class>
+</hibernate-mapping>
